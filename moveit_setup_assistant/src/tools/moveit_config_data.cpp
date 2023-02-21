@@ -865,8 +865,8 @@ std::vector<OMPLPlannerDescription> MoveItConfigData::getOMPLPlanners() const
 
   OMPLPlannerDescription aitstar("AITstar", "geometric");
   aitstar.addParameter(
-    "use_k_nearest", "1",
-    "Set whether to use a k-nearest RGG connection model. If false, AITstar uses an r-disc model. Default: 1");
+      "use_k_nearest", "1",
+      "Set whether to use a k-nearest RGG connection model. If false, AITstar uses an r-disc model. Default: 1");
   aitstar.addParameter("rewire_factor", "1.5",
                        "Set the rewire factor of the RGG. Valid values: [1.0:0.01:3.0]. Default: 1.5");
   aitstar.addParameter("samples_per_batch", "100", "Set the batch size. Valid values: [1:1:1000]. Default: 100");
