@@ -863,6 +863,8 @@ std::vector<OMPLPlannerDescription> MoveItConfigData::getOMPLPlanners() const
   spar_stwo.addParameter("max_failures", "5000", "maximum consecutive failure limit. default: 5000");
   planner_des.push_back(spar_stwo);
 
+// TODO: remove when ROS Melodic and older are no longer supported
+#if OMPL_VERSION_VALUE >= 1005000
   OMPLPlannerDescription aitstar("AITstar", "geometric");
   aitstar.addParameter(
       "use_k_nearest", "1",
@@ -877,7 +879,8 @@ std::vector<OMPLPlannerDescription> MoveItConfigData::getOMPLPlanners() const
                        "maximum number of goals sampled from sampleable goal regions. "
                        "Valid values: [1:1:1000]. Default: 1");
   planner_des.push_back(aitstar);
-
+#endif
+  
   return planner_des;
 }
 
