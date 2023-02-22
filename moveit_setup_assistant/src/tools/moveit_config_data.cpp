@@ -866,21 +866,19 @@ std::vector<OMPLPlannerDescription> MoveItConfigData::getOMPLPlanners() const
 // TODO: remove when ROS Melodic and older are no longer supported
 #if OMPL_VERSION_VALUE >= 1005000
   OMPLPlannerDescription aitstar("AITstar", "geometric");
-  aitstar.addParameter(
-      "use_k_nearest", "1",
-      "whether to use a k-nearest RGG connection model (1) or an r-disc model (0). Default: 1");
+  aitstar.addParameter("use_k_nearest", "1",
+                       "whether to use a k-nearest RGG connection model (1) or an r-disc model (0). Default: 1");
   aitstar.addParameter("rewire_factor", "1.001",
                        "rewire factor of the RGG. Valid values: [1.0:0.01:3.0]. Default: 1.001");
   aitstar.addParameter("samples_per_batch", "100", "batch size. Valid values: [1:1:1000]. Default: 100");
   aitstar.addParameter("use_graph_pruning", "1", "enable graph pruning (1) or not (0). Default: 1");
-  aitstar.addParameter("find_approximate_solutions", "0",
-                       "track approximate solutions (1) or not (0). Default: 0");
+  aitstar.addParameter("find_approximate_solutions", "0", "track approximate solutions (1) or not (0). Default: 0");
   aitstar.addParameter("set_max_num_goals", "1",
                        "maximum number of goals sampled from sampleable goal regions. "
                        "Valid values: [1:1:1000]. Default: 1");
   planner_des.push_back(aitstar);
 #endif
-  
+
   return planner_des;
 }
 
