@@ -72,6 +72,8 @@
 // TODO: remove when ROS Melodic and older are no longer supported
 #if OMPL_VERSION_VALUE >= 1005000
 #include <ompl/geometric/planners/informedtrees/AITstar.h>
+#include <ompl/geometric/planners/informedtrees/ABITstar.h>
+#include <ompl/geometric/planners/informedtrees/BITstar.h>
 #endif
 
 #include <moveit/ompl_interface/parameterization/joint_space/joint_model_state_space_factory.h>
@@ -300,6 +302,8 @@ void ompl_interface::PlanningContextManager::registerDefaultPlanners()
 // TODO: remove when ROS Melodic and older are no longer supported
 #if OMPL_VERSION_VALUE >= 1005000
   registerPlannerAllocatorHelper<og::AITstar>("geometric::AITstar");
+  registerPlannerAllocatorHelper<og::ABITstar>("geometric::ABITstar");
+  registerPlannerAllocatorHelper<og::BITstar>("geometric::BITstar");
 #endif
 }
 
