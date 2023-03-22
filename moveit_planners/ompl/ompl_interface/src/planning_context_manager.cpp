@@ -479,13 +479,18 @@ ompl_interface::ModelBasedPlanningContextPtr ompl_interface::PlanningContextMana
   ModelBasedStateSpaceFactoryPtr factory;
   auto it = pc->second.config.find("enforce_joint_model_state_space");
 
+  auto type_it = pc->second.config.find("type");
+  std::string planner_type;
+  if (type_it != pc->second.config.end())
+    planner_type = type_it->second;
+
   if (it != pc->second.config.end() && boost::lexical_cast<bool>(it->second))
     factory = getStateSpaceFactory(JointModelStateSpace::PARAMETERIZATION_TYPE);
-  else if (req.planner_id.find("AITstar") != std::string::npos)
+  else if (planner_type == "geometric::AITstar")
     factory = getStateSpaceFactory(JointModelStateSpace::PARAMETERIZATION_TYPE);
-  else if (req.planner_id.find("ABITstar") != std::string::npos)
+  else if (planner_type == "geometric::ABITstar")
     factory = getStateSpaceFactory(JointModelStateSpace::PARAMETERIZATION_TYPE);
-  else if (req.planner_id.find("BITstar") != std::string::npos)
+  else if (planner_type == "geometric::BITstar")
     factory = getStateSpaceFactory(JointModelStateSpace::PARAMETERIZATION_TYPE);
   else
     factory = getStateSpaceFactory(pc->second.group, req);
